@@ -1,0 +1,38 @@
+<html>
+    <head>
+    	<link href="multiLineGraph.css" rel="stylesheet">
+    </head>
+    <body>
+    	<p>Multi line graph</p>
+    	<div id="parent" class="class1"></div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js"></script>       
+  		<script src="multiLineGraph.js"></script> 
+   		<script>
+			var config = {
+				container: "#parent",
+				width: 700,
+				height: 400,
+				valueProp: 'value',
+				dateProp: 'date',
+				labelProp: 'category',
+				tickFormat: '%b'
+			}
+			
+			var data = [
+					{'category':'FR1', 'date':"2015-06-01", 'value':200},
+					{'category':'FR1', 'date':"2015-07-02", 'value':145},
+					{'category':'FR1', 'date':"2015-08-03", 'value':313},
+					{'category':'FR1', 'date':"2015-09-04", 'value':265},
+					{'category':'FR1', 'date':"2015-10-05", 'value':219},
+					{'category':'FR2', 'date':"2015-06-10", 'value':600},
+					{'category':'FR2', 'date':"2015-07-15", 'value':21},
+					{'category':'FR2', 'date':"2015-08-03", 'value':388},
+					{'category':'FR2', 'date':"2015-09-04", 'value':298},
+					{'category':'FR2', 'date':"2015-10-20", 'value':345},
+					{'category':'FR2', 'date':"2015-11-11", 'value':100}
+				]
+			
+			var graph = new multiLineGraph(config,data);
+		</script>
+    </body>
+</html>

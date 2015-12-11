@@ -1,0 +1,15 @@
+.multi-line-graph path { 
+/*    stroke: steelblue;*/
+    stroke-width: 2;
+    fill: none;
+}
+.multi-line-graph g.tick text {
+    font-size: 14px;
+}
+.multi-line-graph .axis path,
+.multi-line-graph .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
