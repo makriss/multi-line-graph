@@ -1,6 +1,9 @@
 <html>
     <head>
     	<link href="multiLineGraph.css" rel="stylesheet">
+    	<style>
+			#parent{ width: 40%; height: 200px; }
+		</style>
     </head>
     <body>
     	<p>Multi line graph</p>
@@ -10,12 +13,13 @@
    		<script>
 			var config = {
 				container: "#parent",
-				width: 700,
-				height: 400,
+				width: 400,
+				height: 200,
 				valueProp: 'value',
 				dateProp: 'date',
 				labelProp: 'category',
-				tickFormat: '%b'
+				tickFormat: "%b, '%y",
+				popupFormat: "%d %b '%y"
 			}
 			
 			var data = [
