@@ -7,6 +7,8 @@
     </head>
     <body>
     	<p>Multi line graph</p>
+    	<button type="submit" id="btn">Toggle Data</button>
+    	<br>
     	<div id="parent" class="class1"></div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js"></script>       
   		<script src="multiLineGraph.js"></script> 
@@ -36,7 +38,57 @@
 					{'category':'FR2', 'date':"2015-11-11", 'value':100}
 				]
 			
+			var data2 = [
+					{'category':'FR1', 'date':"2015-06-01", 'value':200},
+					{'category':'FR1', 'date':"2015-07-02", 'value':145},
+					{'category':'FR1', 'date':"2015-08-03", 'value':313},
+					{'category':'FR1', 'date':"2015-09-04", 'value':265},
+					{'category':'FR1', 'date':"2015-10-05", 'value':219},
+					{'category':'FR2', 'date':"2015-06-10", 'value':600},
+					{'category':'FR2', 'date':"2015-07-15", 'value':21},
+					{'category':'FR2', 'date':"2015-08-03", 'value':388},
+					{'category':'FR2', 'date':"2015-09-04", 'value':298},
+					{'category':'FR2', 'date':"2015-10-20", 'value':345},
+					{'category':'FR2', 'date':"2015-11-11", 'value':100},
+					{'category':'FR3', 'date':"2015-06-10", 'value':450},
+					{'category':'FR3', 'date':"2015-07-15", 'value':600},
+					{'category':'FR3', 'date':"2015-08-03", 'value':800},
+					{'category':'FR3', 'date':"2015-09-04", 'value':456},
+					{'category':'FR3', 'date':"2015-10-20", 'value':122},
+					{'category':'FR3', 'date':"2015-11-11", 'value':321}
+			]
+			
 			var graph = new multiLineGraph(config,data);
+			
+			var count = 0,
+				currentData = JSON.parse(JSON.stringify(data)),
+				btn = document.getElementById('btn');
+			btn.addEventListener('click', function(){
+				switch(true){
+					case count%3==0:	graph.updateGraph(data2);
+										currentData = JSON.parse(JSON.stringify(data2));
+										break;
+					case count%3==1:	random();
+										break;
+					case count%3==2: 	graph.updateGraph(data);
+										currentData = JSON.parse(JSON.stringify(data));
+										break;
+				}
+				count++;
+			});
+			
+			function random(){
+				var mode = Math.random()>=0.5?1:0;
+				var position = parseInt(Math.random()*(currentData.length));
+				if(mode===1){	//remove an index from array
+					currentData.splice(position-1,1);
+					graph.updateGraph(currentData);
+				}
+				else{
+					currentData[position-1][config.dateProp] = "2016-01-01";
+					graph.updateGraph(currentData);
+				}
+			}
 		</script>
     </body>
 </html>

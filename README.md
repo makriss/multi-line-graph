@@ -27,3 +27,9 @@ Creates an interactive, responsive multi line graph with dots on data points and
 4. Instantiate multiLineGraph function and pass in config and data objects as parameters
 
 5. Voila!
+
+
+#Features-
+1. Transitions on value change
+
+2. Dynamic chart update by calling **updateGraph** method
